@@ -9,33 +9,33 @@ public class Prime_Factors {
             461,463,467,479,487,491,499,503,509,521,523,541,547,557,563,569,571,577,587,593,599,
             601,607,613,617,619,631,641,643,647,653,659,661,673,677,683,691,701,709,719,727,733,
             739,743,751,757,761,769,773,787,797,809,811,821,823,827,829,839,853,857,859,863,877,
-            881,883,887,907,911,919,929,937,941,947,953,967,971,977,983,991,997};
+            881,883,887,907,911,919,929,937,941,947,953,967,971,977,983,991,997}; // Массив простых чисел
 
-    public static ArrayList<String> findPrimeFactors(long number){
+    public static ArrayList<String> findPrimeFactors(long number){ // Функция нахождения простых множителей
         long temp = number;
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<String>(); // Создаем массив
         int i=0;
-        while(temp != 1){
-            if(temp%primes[i]==0){
-                result.add(Integer.toString(primes[i]));
+        while(temp != 1){ // Ищем все простые множители числа, проходя по массиву и проверяя остаток
+            if(temp%primes[i]==0){ // Если очередной элемент массива является множителем
+                result.add(Integer.toString(primes[i])); // Добавляем элемент в список простых множителей
                 temp /= primes[i];
             }
-            else{
+            else{ // Иначе
                 i++;
             }
         }
         return result;
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]){ // Функция main
         Scanner input = new Scanner(System.in);
-        System.out.print("Введите целое число: ");
-        String string = input.next();
-        try{
+        System.out.print("Введите целое число: "); // Просим ввести целое число
+        String string = input.next(); // Считываем число из потока ввода
+        try{ // Проверяем, введено ли целое число
             long number = Long.parseLong(string);
             System.out.println(findPrimeFactors(number));
         }
-        catch(NumberFormatException e){
+        catch(NumberFormatException e){ // Выводим сообщение об ошибке если нет
             System.out.println("Вы ввели не целое число!!!");
         }
     }
