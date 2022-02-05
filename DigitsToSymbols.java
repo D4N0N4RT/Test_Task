@@ -14,11 +14,11 @@ public class DigitsToSymbols {
     public static final String[] eight = {" *** ","*   *","*   *"," *** ","*   *","*   *"," *** "};
     public static final String[] nine = {" *** ","*   *","*   *"," *** ","    *","    *"," *** "};
 
-    public static void drawNumbers(int number){
-        Stack<String[]> order = new Stack<>();
-        while(number > 0){
-            switch(number % 10){
-                case 0:
+    public static void drawNumbers(int number){ // Функция вывода числа
+        Stack<String[]> order = new Stack<>(); // Новый стек
+        while(number > 0){ // Пока число больше нуля
+            switch(number % 10){ // Находим цифры числа начиная с единичного разряда
+                case 0: // Добавляем изображение очередной цифры в стек
                     order.push(zero);
                     break;
                 case 1:
@@ -52,18 +52,18 @@ public class DigitsToSymbols {
             number /= 10;
         }
         ArrayList<String[]> digits = new ArrayList<>(order);
-        Collections.reverse(digits);
-        for(int j=0;j<7;j++) {
+        Collections.reverse(digits); // Разворачиваем стек
+        for(int j=0;j<7;j++) { // Выводим построчно цифры
             for (int i = 0; i < digits.size(); i++) {
                 System.out.print(" " + digits.get(i)[j]);
             }
             System.out.print('\n');
         }
     }
-    public static void main(String args[]){
+    public static void main(String args[]){ // Функция main
         Scanner input = new Scanner(System.in);
-        System.out.print("Введите целое число: ");
-        int number = input.nextInt();
-        drawNumbers(number);
+        System.out.print("Введите целое число: "); // Просим ввести число
+        int number = input.nextInt(); // Считываем число
+        drawNumbers(number); // Рисуем его символами
     }
 }
